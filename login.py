@@ -1,0 +1,1 @@
+UserName = print(input())
