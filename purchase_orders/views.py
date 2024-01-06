@@ -8,10 +8,11 @@ from purchase_orders.models import Orders, Buyer, Seller, Product
 
 
 def index(request):
-    response = Orders.objects.all()
-    output = ", ".join([oc.name for oc in response])
+    orders = Orders.objects.all()
+    # output = ", ".join([oc.name for oc in orders])
     # return HttpResponse('hola')
-    return HttpResponse(output)
+    # return HttpResponse(output)
+    return render(request, 'orders/index.html', {'orders': orders})
     
     
 
