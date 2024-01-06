@@ -14,7 +14,8 @@ def index(request):
     # return HttpResponse(output)
     return render(request, 'orders/index.html', {'orders': orders})
     
-    
-
+def detail(request, order_id):
+    order = Orders.objects.get(pk = order_id)
+    return render(request, 'orders/details.html', {'order': order})
     
 

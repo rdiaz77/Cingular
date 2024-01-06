@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<dl>
+  <dt>Numero OC</dt>
+  <dd>{{order.number}}</dd>
+  {% comment %}
+  <dt>Estado OC</dt>
+  <dd>{{}}</dd>
+  {% endcomment %}
+  <dt>Nombre</dt>
+  <dd>{{order.name}}</dd>
+</dl>
+
+{% endblock %}
