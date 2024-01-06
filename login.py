@@ -1,1 +1,0 @@
-UserName = print(input())

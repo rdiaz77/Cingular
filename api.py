@@ -1,11 +1,13 @@
 import json
 import requests
-from config import api_key, public_key
+from config import public_key
 
 
-url_oc = f"https://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=1627-1836-SE23&ticket={public_key}"
 
-response_oc = requests.get(url_oc).json()  # converts json to dict 
+url_oc = f"https://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=1627-1836-SE23&ticket={
+    public_key}"
+
+response_oc = requests.get(url_oc).json()  # converts json to dict
 # print(response_oc)
 data_oc = response_oc["Listado"]
 # print(data_oc)
@@ -14,22 +16,12 @@ for item in data_oc:
     # print(item["Fechas"])
     # print(item["TotalNeto"])
     # print(item["Comprador"])
-    proveedor_oc = (item["Proveedor"])
+    provider_oc = (item["Proveedor"])
     # print(item["Items"])
-    comprador_oc = (item["Comprador"])
+    buyer_oc = (item["Comprador"])
 
-print(comprador_oc["RutUnidad"])
-print(proveedor_oc["Codigo"])
-        
-
-
-
-
-
-    
-
-
-
+print(buyer_oc["RutUnidad"])
+print(provider_oc["Codigo"])
 
 
 # Datos consulta: Cantidad, FechaCreacion, Version // response_oc
@@ -41,8 +33,3 @@ print(proveedor_oc["Codigo"])
 # for item in orden_compra:
 #     print(item["Codigo"])
 # [item for item in list]
-
-
-
-
-
