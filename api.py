@@ -9,19 +9,19 @@ url_oc = f"https://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.js
 
 response_oc = requests.get(url_oc).json()  # converts json to dict
 # print(response_oc)
-data_oc = response_oc["Listado"]
-# print(data_oc)
+data_oc = response_oc
+print(data_oc)
 
-for item in data_oc:
+# for item in data_oc:
     # print(item["Fechas"])
     # print(item["TotalNeto"])
     # print(item["Comprador"])
-    provider_oc = (item["Proveedor"])
-    # print(item["Items"])
-    buyer_oc = (item["Comprador"])
+    # provider_oc = (item["Proveedor"])
+    # # print(item["Items"])
+    # buyer_oc = (item["Comprador"])
 
-print(buyer_oc["RutUnidad"])
-print(provider_oc["Codigo"])
+# print(buyer_oc["RutUnidad"])
+# print(provider_oc["Codigo"])
 
 
 # Datos consulta: Cantidad, FechaCreacion, Version // response_oc

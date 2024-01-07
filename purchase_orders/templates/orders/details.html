@@ -1,14 +1,23 @@
 {% extends "base.html" %} {% block content %}
 
 <dl>
-  <dt>Numero OC</dt>
-  <dd>{{order.number}}</dd>
-  {% comment %}
-  <dt>Estado OC</dt>
-  <dd>{{}}</dd>
-  {% endcomment %}
-  <dt>Nombre</dt>
-  <dd>{{order.name}}</dd>
+  <dt>ORDEN DE COMPRA</dt>
+  <dd>Numero: {{order.number}}</dd>
+  <dd>Descripcion: {{order.name}}</dd>
+  <dd>Tipo:</dd>
+  <dd>F. Creacion:</dd>
+  <dd>F. Aceptacion:</dd>
+  <dd>F. Cancelacion:</dd>
+  <dd>Total Items:</dd>
+  <dd>Descuentos:</dd>
+  <dd>Cargos:</dd>
+  <dd>Total:</dd>
+  <dd>Impuesto:</dd>
+  <dd>Condicion Pago:</dd>
+  <dd>Financiamiento:</dd>
+  <dd>Unidad:</dd>
+
+
 </dl>
 
 {% endblock %}
