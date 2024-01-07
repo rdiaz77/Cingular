@@ -11,7 +11,7 @@
   <tbody>
     {% for oc in orders %}
     <tr>
-      <th>{{oc.number}}</th>
+      <a href="{% url 'order: detail' oc.id %}"><th>{{oc.number}}</th></a>
       <th>{{oc.status_code}}</th>
       <th>{{oc.name}}</th>
     </tr>
