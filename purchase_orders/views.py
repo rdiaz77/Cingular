@@ -13,6 +13,9 @@ def index(request):
     # return HttpResponse('hola')
     # return HttpResponse(output)
     return render(request, 'orders/index.html', {'orders': orders})
+
+def dashboard(request):
+    return HttpResponse('dashboard')
     
 def detail(request, order_id):
     order = Orders.objects.get(pk = order_id)

@@ -8,6 +8,7 @@ app_name = 'order'
 
 urlpatterns = [
     path("", views.index, name= 'index'),
-    path('<int:order_id>', views.detail, name = 'detail')
+    path('<int:order_id>', views.detail, name = 'detail'),
+    path('dashboard', views.dashboard, name = 'dasboard')
     
 ]
