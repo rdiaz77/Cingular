@@ -1,30 +1,44 @@
 import json
 import requests
-
+import time
 
 # from cingular.config import public_key
-
-
 url_oc = "https://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=1627-1836-SE23&ticket=F8537A18-6766-4DEF-9E59-426B4FEE2844"
-
-
-def fecthData():
-    res = requests.get(url_oc).json()
-    print(res)
 
 # entrega la full lista de informacion, aunque el dict base que genera json tiene informacion addicional:
 # Cantidad': 1, 'FechaCreacion': '2024-01-07T05:22:48.0319247Z', 'Version': 'v1'
 # {'Codigo': '1627-1836-SE23', 'Nombre': 'CINTAS DE CETONEMIA', 'CodigoEstado': 12, 'Estado': 'Recepción Conforme', 'CodigoLicitacion': '', 'Descripcion': 'SE REQUIERE PARA EL LABORATORIO DEL HOSPITAL DE SAN FERNANDO\r\n\r\nSBYS 1345\r\n\r\nSEGÚN COT N°2544', 'CodigoTipo': '8', 'Tipo': 'SE', 'TipoMoneda': 'CLP', 'CodigoEstadoProveedor': 7, 'EstadoProveedor': 'Recepción Conforme', 'Fechas': {'FechaCreacion': '2023-12-01T10:41:02.777', 'FechaEnvio': '2023-12-13T10:37:18.837', 'FechaAceptacion': '2023-12-13T19:23:24.39', 'FechaCancelacion': None, 'FechaUltimaModificacion': '2023-12-14T16:38:00
 
+def retrieveData(url):
+    res = requests.get(url)
+    if res.status_code == 200:
+        res_api = res.json()
+        return res_api
+    else:
+        print('data cannot be fetched')
+        
 
-list = res["Listado"][0]
+OcData = (retrieveData(url_oc))
 
-def ocData():
-    for oc in list:
-        oc_num = list['Codigo']
-        oc_status= list['CodigoEstado']
-        oc_name= list['Nombre']
+
+def createOcDict(data):
+    list = data['Listado'][0]
+    return list
+
+ocDict = createOcDict(OcData)
+
+
+def extractOcData(dict):
+    for oc in dict:
+        oc_num = dict['Codigo']
+        oc_status= dict['CodigoEstado']
+        oc_name= dict['Nombre'].lower()
+        # oc_tender_code = dict['CodigoLicitacion']
     return(oc_num, oc_status, oc_name)
+
+
+print(extractOcData(ocDict))
+
 
 # #  Insert data in sqlite
 # # for dr in drivers:
