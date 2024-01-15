@@ -1,6 +1,10 @@
+
+
 import json
 import requests
 import time
+from purchase_orders.models import Orders
+
 
 # from cingular.config import public_key
 url_oc = "https://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=1627-1836-SE23&ticket=F8537A18-6766-4DEF-9E59-426B4FEE2844"
@@ -34,19 +38,23 @@ def extractOcData(dict):
         oc_status= dict['CodigoEstado']
         oc_name= dict['Nombre'].lower()
         # oc_tender_code = dict['CodigoLicitacion']
+        # sql = 'INSERT INTO purchase_orders_orders(number, status_code, name) VALUES (?,?,?)'
+        # val = (oc_num, oc_status, oc_name)
+        # cur.execute(sql,val)
     return(oc_num, oc_status, oc_name)
 
 
 print(extractOcData(ocDict))
 
 
-# #  Insert data in sqlite
-# # for dr in drivers:
-# #     name = dr["familyName"]
-# #     number = dr["permanentNumber"] 
-# #     sql = 'INSERT INTO Drivers (name,number) VALUES(?,?)'
-# #     val = (name,number)
-# #     cur.execute(sql,val)
+
+#  Insert data in sqlite
+# for dr in drivers:
+#     name = dr["familyName"]
+#     number = dr["permanentNumber"] 
+#     sql = 'INSERT INTO Drivers (name,number) VALUES(?,?)'
+#     val = (name,number)
+#     cur.execute(sql,val)
 
 
 # # 'FechaCreacion': '2023-12-01T10:41:02.777', 'FechaEnvio': '2023-12-13T10:37:18.837', 'FechaAceptacion': '2023-12-13T19:23:24.39', 'FechaCancelacion': None, 'FechaUltimaModificacion': '2023-12-14T16:38:00'}
